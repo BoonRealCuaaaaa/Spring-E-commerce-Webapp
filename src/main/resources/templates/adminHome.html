@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,7 +29,12 @@
                     <a class="nav-link" th:href="@{/admin}" href="#">admin-home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/logout}" href="#">logout</a>
+                    <a href="javascript: document.logoutform.submit()" sec:authorize="isAuthenticated()"  class="nav-link"  style="text-decoration: none;">
+                        Logout
+                    </a>
+                    <form name="logoutform" th:action="@{/logout}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="Logout"/>
+                    </form>
                 </li>
 
             </ul>

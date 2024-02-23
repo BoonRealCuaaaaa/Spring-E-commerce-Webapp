@@ -38,7 +38,12 @@
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                    <a href="javascript: document.logoutform.submit()" sec:authorize="isAuthenticated()"  class="nav-link"  style="text-decoration: none;">
+                        Logout
+                    </a>
+                    <form name="logoutform" th:action="@{/logout}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="Logout"/>
+                    </form>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
@@ -49,6 +54,7 @@
             </ul>
 
         </div>
+
     </div>
 </nav>
 
